@@ -231,7 +231,7 @@ MonoBehaviour:
   deathFX: {fileID: 1230274936204722}
   hitFX: {fileID: 1918824897098898}
   waitUntilDestroy: 1
-  hits: 4
+  hits: 6
   colliderMesh: {fileID: 65573455956592266}
 --- !u!198 &198023821923974054
 ParticleSystem:
