@@ -324,6 +324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816037e109cba0643a88890910673520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exploredColor: {r: 0.5290085, g: 0.52078146, b: 0.7830189, a: 0}
+  exploredColor: {r: 0, g: 0, b: 0, a: 0}
   isExplored: 0
   exploredFrom: {fileID: 0}
+  isPlaceable: 1
+  towerPrefab: {fileID: 114068994568079242, guid: 8cf5e0eedaab0a942834d82c8f4081d3,
+    type: 2}
