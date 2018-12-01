@@ -8,18 +8,27 @@ public class Tower : MonoBehaviour {
     Transform objectToPan;
     [SerializeField]
     Transform targetEnemy;
+    [SerializeField]
+    float towerRange = 31f;
 
     // Update is called once per frame
-    void Update () {
+    void Update() {
         objectToPan.LookAt(targetEnemy);
 
         EnableEmission(enemyInRange());
-        
 
-	}
+
+    }
 
     private bool enemyInRange() {
-        return true; //todo check if enemy is in range
+        if (targetEnemy) {
+            if (Vector3.Distance(targetEnemy.transform.position, gameObject.transform.position) < towerRange) {
+                Debug.Log("in range");
+                return true;
+            }
+        }
+
+        return false; //todo check if enemy is in range
     }
 
     private void EnableEmission(bool toEnable) {

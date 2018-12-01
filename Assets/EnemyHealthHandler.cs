@@ -12,7 +12,8 @@ public class EnemyHealthHandler : MonoBehaviour {
     int waitUntilDestroy = 1;
     [SerializeField]
     int hits = 4;
-
+    [SerializeField]
+    Collider colliderMesh;
    
 
     private void OnParticleCollision(GameObject other) {
