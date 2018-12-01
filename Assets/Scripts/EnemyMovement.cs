@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour {
         StartCoroutine(FollowPath(path));
 
     }
-    
+
     private IEnumerator FollowPath(List<Waypoint> path) {
         foreach (Waypoint waypoint in path) {
             if (isMoving) {

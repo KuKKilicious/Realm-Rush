@@ -16,11 +16,7 @@ public class Waypoint : MonoBehaviour {
     Vector2Int gridPos;
     // Use this for initialization
 
-    private void Update() {
-        if (isExplored) {
-            SetTopColor(exploredColor);
-        }
-    }
+
     public Vector2Int GetGridPos() {
         return new Vector2Int(
          Mathf.RoundToInt(transform.position.x / gridSize),
@@ -31,9 +27,10 @@ public class Waypoint : MonoBehaviour {
         return gridSize;
     }
 
-    public void SetTopColor(Color color) {
 
-        MeshRenderer topMeshRenderer = transform.Find("top").GetComponent<MeshRenderer>();
-        topMeshRenderer.material.color = color;
+
+    private void OnMouseOver() {
+        //If your mouse hovers over the GameObject with the script attached, output this message
+        Debug.Log("Mouse is over Waypoint at:" + GetGridPos());
     }
 }

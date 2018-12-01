@@ -33,7 +33,6 @@ public class Pathfinder : MonoBehaviour {
     private void CalculatePath() {
         LoadBlocks();
 
-        ColorStartAndEnd();
         BreadthFirstSearch();
         CreatePath();
     }
@@ -89,10 +88,7 @@ public class Pathfinder : MonoBehaviour {
         throw new NotImplementedException();
     }
 
-    private void ColorStartAndEnd() {
-        startPoint.SetTopColor(Color.gray);
-        endPoint.SetTopColor(Color.magenta);
-    }
+
 
     private void LoadBlocks() {
         Waypoint[] waypoints = FindObjectsOfType<Waypoint>();
@@ -101,7 +97,6 @@ public class Pathfinder : MonoBehaviour {
             if (!grid.ContainsKey(waypoint.GetGridPos())) {
                 //add to dictionary
                 grid.Add(waypoint.GetGridPos(), waypoint);
-                waypoint.SetTopColor(Color.black);
             } else {
                 Debug.LogWarning("skipping Overlapping block" + waypoint.name + " at " + waypoint.GetGridPos());
             }
