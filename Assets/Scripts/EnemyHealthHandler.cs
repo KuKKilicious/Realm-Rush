@@ -8,7 +8,9 @@ public class EnemyHealthHandler : MonoBehaviour {
     GameObject deathFX;
     [SerializeField]
     GameObject hitFX;
- 
+    [SerializeField]
+    GameObject damageCastleFX;
+
     [SerializeField]
     int hits = 4;
     [SerializeField]
@@ -35,7 +37,12 @@ public class EnemyHealthHandler : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    
+    public void DamageCastle() {
+        var fX = Instantiate(damageCastleFX, transform.position, Quaternion.identity);
+        float destroyWaitTime = fX.GetComponent<ParticleSystem>().main.duration;
+        Destroy(fX, destroyWaitTime);
+        Destroy(gameObject,destroyWaitTime);
+    }
 
     private void ProcessHits() {
         hits--;

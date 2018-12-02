@@ -404,6 +404,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathFX: {fileID: 1929956291960174, guid: 1a51bfda454239a41afb7dee687c6ac0, type: 2}
   hitFX: {fileID: 1579912983715004}
+  damageCastleFX: {fileID: 1622375713182688, guid: 81f11b6946d95bd4ca91e502d73b1665,
+    type: 2}
   hits: 4
   colliderMesh: {fileID: 65598544800772234}
 --- !u!114 &114941686308246830

@@ -8,12 +8,14 @@ public class EnemyMovement : MonoBehaviour {
     [SerializeField][Range(0.1f,2f)]
     float waitBetweenTurns = 1f;
     bool isMoving = true;
+
+    EnemyHealthHandler healthHandler;
 	// Use this for initialization
 	void Start () {
         Pathfinder pathFinder = FindObjectOfType<Pathfinder>();
         var path = pathFinder.getPath();
         StartCoroutine(FollowPath(path));
-
+        healthHandler = GetComponent<EnemyHealthHandler>();
     }
 
     private IEnumerator FollowPath(List<Waypoint> path) {
@@ -25,6 +27,7 @@ public class EnemyMovement : MonoBehaviour {
                 break;
             }
         }
+        healthHandler.DamageCastle();
     }
 
     public void StopMoving() {
