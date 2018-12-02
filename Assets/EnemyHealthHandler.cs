@@ -8,8 +8,7 @@ public class EnemyHealthHandler : MonoBehaviour {
     GameObject deathFX;
     [SerializeField]
     GameObject hitFX;
-    [SerializeField]
-    int waitUntilDestroy = 1;
+ 
     [SerializeField]
     int hits = 4;
     [SerializeField]
@@ -31,14 +30,12 @@ public class EnemyHealthHandler : MonoBehaviour {
     }
 
     private void KillEnemy() {
-        deathFX.SetActive(true);
-        StartCoroutine(DestroyEnemyObject(waitUntilDestroy));
-    }
-
-    private IEnumerator DestroyEnemyObject(int wait) {
-        yield return new WaitForSeconds(wait);
+        var fX = Instantiate(deathFX, transform.position, Quaternion.identity);
+        Destroy(fX,fX.GetComponent<ParticleSystem>().main.duration);
         Destroy(gameObject);
     }
+
+    
 
     private void ProcessHits() {
         hits--;

@@ -10,7 +10,7 @@ public class Tower : MonoBehaviour {
     Transform objectToPan;
     [SerializeField]
     float towerRange = 31f;
-
+    public Waypoint baseWaypoint; //what the tower is standing on
     //State of each tower
     Transform targetEnemy;
     // Update is called once per frame

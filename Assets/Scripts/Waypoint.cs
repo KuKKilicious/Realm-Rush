@@ -10,11 +10,9 @@ public class Waypoint : MonoBehaviour {
     public bool isExplored=false;
     public Waypoint exploredFrom;
     public bool isPlaceable = true;
-    [SerializeField]
-    Tower towerPrefab;
+  
 
     const int gridSize = 10;
-    private bool isTowerPlaced = false;
     Vector2Int gridPos;
     // Use this for initialization
 
@@ -33,9 +31,9 @@ public class Waypoint : MonoBehaviour {
 
     private void OnMouseOver() {
         if (Input.GetMouseButtonDown(0) && isPlaceable) {
-            if (!isTowerPlaced) {
+            
                 PlaceTower();
-            }
+            
         //If the mouse hovers over the GameObject with the script attached, output this message
         Debug.Log("Mouse clicked Waypoint at:" + GetGridPos());
 
@@ -43,7 +41,6 @@ public class Waypoint : MonoBehaviour {
     }
 
     private void PlaceTower() {
-        Instantiate(towerPrefab, transform.position, Quaternion.identity, GameObject.Find("Towers").transform);
-        isTowerPlaced = true;
+        FindObjectOfType<TowerFactory>().AddTower(this);
     }
 }
