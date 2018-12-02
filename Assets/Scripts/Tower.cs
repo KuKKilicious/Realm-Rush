@@ -51,7 +51,6 @@ public class Tower : MonoBehaviour {
     private bool enemyInRange() {
         if (targetEnemy) {
             if (Vector3.Distance(targetEnemy.transform.position, gameObject.transform.position) < towerRange) {
-                Debug.Log("in range");
                 return true;
             }
         }

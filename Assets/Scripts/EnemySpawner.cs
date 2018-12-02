@@ -10,11 +10,15 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField]
     EnemyMovement enemyToSpawn;
     [SerializeField]
+    AudioClip spawnedEnemySFX;
+    [SerializeField]
     int amountOfEnemiesToSpawn = 12;
 
     int enemiesSpawned = 0;
     [SerializeField]
     Text scoreText;
+
+    
     // Use this for initialization
     void Start () {
         StartCoroutine(SpawnEnemyEachSeconds(secendsBetweenSpawns));
@@ -23,7 +27,8 @@ public class EnemySpawner : MonoBehaviour {
 
     private IEnumerator SpawnEnemyEachSeconds(float secendsBetweenSpawns) {
         while (true) {
-        Instantiate(enemyToSpawn,transform.position,Quaternion.identity,transform);
+            GetComponent<AudioSource>().PlayOneShot(spawnedEnemySFX);
+            Instantiate(enemyToSpawn,transform.position,Quaternion.identity,transform);
             IncreaseScore();
             yield return new WaitForSeconds(secendsBetweenSpawns); 
         }

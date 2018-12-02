@@ -15,7 +15,11 @@ public class EnemyHealthHandler : MonoBehaviour {
     int hits = 4;
     [SerializeField]
     Collider colliderMesh;
-   
+
+    [SerializeField]
+    AudioClip hitEnemySFX;
+    [SerializeField]
+    AudioClip deathEnemySFX;
 
     private void OnParticleCollision(GameObject other) {
         ProcessHits();
@@ -32,6 +36,8 @@ public class EnemyHealthHandler : MonoBehaviour {
     }
 
     private void KillEnemy() {
+        
+        AudioSource.PlayClipAtPoint(deathEnemySFX,Camera.main.transform.position);
         var fX = Instantiate(deathFX, transform.position, Quaternion.identity);
         Destroy(fX,fX.GetComponent<ParticleSystem>().main.duration);
         Destroy(gameObject);
@@ -47,5 +53,6 @@ public class EnemyHealthHandler : MonoBehaviour {
     private void ProcessHits() {
         hits--;
         hitFX.GetComponent<ParticleSystem>().Play();
+        GetComponent<AudioSource>().PlayOneShot(hitEnemySFX);
     }
 }
